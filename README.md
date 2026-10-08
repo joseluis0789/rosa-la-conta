@@ -1,1 +1,1192 @@
-# rosa-la-conta
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Rosa la Conta | Despacho Contable</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7f5;
+            color: #26352d;
+        }
+
+        /* ===== ENCABEZADO ===== */
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(18, 70, 48, 0.96);
+            box-shadow: 0 3px 15px rgba(0,0,0,0.15);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 25px;
+        }
+
+        .logo {
+            color: white;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #e8c86d;
+        }
+
+        .menu {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .menu a:hover {
+            color: #e8c86d;
+        }
+
+        .menu-btn {
+            display: none;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        /* ===== INICIO ===== */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 100px 20px 50px;
+            background:
+                linear-gradient(rgba(12,63,43,0.90), rgba(12,63,43,0.90)),
+                radial-gradient(circle at 20% 20%, #62a77d 0%, transparent 25%),
+                #123f2d;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .calculator {
+            font-size: 65px;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-size: 58px;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 span {
+            color: #e8c86d;
+        }
+
+        .hero p {
+            font-size: 21px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: #e8c86d;
+            color: #183b2b;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            margin: 5px;
+        }
+
+        .btn:hover {
+            transform: translateY(-4px);
+            background: white;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        /* ===== SECCIONES ===== */
+
+        section {
+            padding: 90px 20px;
+        }
+
+        .container {
+            max-width: 1150px;
+            margin: auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            color: #124630;
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #65736b;
+            font-size: 18px;
+        }
+
+        /* ===== SERVICIOS ===== */
+
+        #servicios {
+            background: white;
+        }
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: #f8faf8;
+            padding: 35px 25px;
+            border-radius: 18px;
+            text-align: center;
+            border: 1px solid #dfe8e2;
+            transition: 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(18,70,48,0.15);
+            border-color: #d6b957;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 5px;
+            width: 100%;
+            background: #d6b957;
+        }
+
+        .card-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            color: #124630;
+            font-size: 23px;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: #5e6b64;
+            line-height: 1.6;
+        }
+
+        .card button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background: #124630;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .card button:hover {
+            background: #d6b957;
+            color: #183b2b;
+        }
+
+        /* ===== SOBRE NOSOTROS ===== */
+
+        #nosotros {
+            background: #edf3ef;
+        }
+
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            color: #124630;
+            font-size: 38px;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #56645b;
+        }
+
+        .accounting-box {
+            background: #124630;
+            color: white;
+            padding: 45px;
+            border-radius: 25px;
+            box-shadow: 15px 15px 0 #d6b957;
+        }
+
+        .accounting-box h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .accounting-box ul {
+            list-style: none;
+        }
+
+        .accounting-box li {
+            margin: 18px 0;
+            font-size: 17px;
+        }
+
+        /* ===== BENEFICIOS ===== */
+
+        #beneficios {
+            background: white;
+        }
+
+        .benefits {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .benefit {
+            text-align: center;
+            padding: 25px;
+        }
+
+        .benefit-icon {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .benefit h3 {
+            color: #124630;
+            margin-bottom: 10px;
+        }
+
+        .benefit p {
+            color: #69756e;
+            line-height: 1.5;
+        }
+
+        /* ===== CONTACTO ===== */
+
+        #contacto {
+            background: #124630;
+            color: white;
+        }
+
+        #contacto .section-title h2 {
+            color: white;
+        }
+
+        #contacto .section-title p {
+            color: #dce8e1;
+        }
+
+        .contact-box {
+            max-width: 750px;
+            margin: auto;
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            color: #26352d;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #ccd8d0;
+            border-radius: 8px;
+            font-family: inherit;
+        }
+
+        textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            background: #d6b957;
+            color: #183b2b;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background: #124630;
+            color: white;
+        }
+
+        /* ===== FOOTER ===== */
+
+        footer {
+            background: #0b2c1f;
+            color: #cbd9d1;
+            text-align: center;
+            padding: 25px;
+        }
+
+        footer strong {
+            color: #e8c86d;
+        }
+
+        /* ===== BOTÓN ARRIBA ===== */
+
+        #topBtn {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            width: 45px;
+            height: 45px;
+            border: none;
+            border-radius: 50%;
+            background: #d6b957;
+            color: #123f2d;
+            font-size: 20px;
+            cursor: pointer;
+            display: none;
+            z-index: 999;
+        }
+
+        /* ===== MODAL ===== */
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.65);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: white;
+            max-width: 600px;
+            padding: 40px;
+            border-radius: 20px;
+            position: relative;
+            animation: aparecer 0.3s ease;
+        }
+
+        .modal-content h2 {
+            color: #124630;
+            margin-bottom: 20px;
+        }
+
+        .modal-content p {
+            line-height: 1.7;
+            color: #56645b;
+        }
+
+        .close {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            font-size: 30px;
+            cursor: pointer;
+            color: #555;
+        }
+
+        @keyframes aparecer {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* ===== RESPONSIVE ===== */
+
+        @media (max-width: 800px) {
+
+            .menu-btn {
+                display: block;
+            }
+
+            .menu {
+                display: none;
+                position: absolute;
+                top: 65px;
+                left: 0;
+                width: 100%;
+                background: #124630;
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
+
+            .menu.active {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .services,
+            .benefits,
+            .about {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            section {
+                padding: 70px 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ===== MENÚ ===== -->
+
+    <header>
+        <nav>
+
+            <div class="logo">
+                🌹 Rosa <span>la Conta</span>
+            </div>
+
+            <div class="menu-btn" onclick="toggleMenu()">
+                ☰
+            </div>
+
+            <ul class="menu" id="menu">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#beneficios">Beneficios</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+
+        </nav>
+    </header>
+
+
+    <!-- ===== INICIO ===== -->
+
+    <section class="hero" id="inicio">
+
+        <div class="hero-content">
+
+            <div class="calculator">📊</div>
+
+            <h1>
+                <span>Rosa</span> la Conta
+            </h1>
+
+            <p>
+                Soluciones contables para que tú puedas concentrarte
+                en hacer crecer tu negocio.
+            </p>
+
+            <a href="#servicios" class="btn">
+                Conoce nuestros servicios
+            </a>
+
+            <a href="#contacto" class="btn btn-secondary">
+                Solicita información
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===== SERVICIOS ===== -->
+
+    <section id="servicios">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2>Nuestros Servicios</h2>
+
+                <p>
+                    Nos encargamos de tus obligaciones contables y fiscales.
+                </p>
+
+            </div>
+
+            <div class="services">
+
+                <!-- SERVICIO 1 -->
+
+                <div class="card">
+
+                    <div class="card-icon">📅</div>
+
+                    <h3>
+                        Declaraciones Mensuales
+                    </h3>
+
+                    <p>
+                        Presentación y seguimiento de declaraciones
+                        fiscales mensuales, ayudándote a mantener tus
+                        obligaciones al día.
+                    </p>
+
+                    <button onclick="abrirModal('mensuales')">
+                        Más información
+                    </button>
+
+                </div>
+
+
+                <!-- SERVICIO 2 -->
+
+                <div class="card">
+
+                    <div class="card-icon">📑</div>
+
+                    <h3>
+                        Declaraciones Anuales
+                    </h3>
+
+                    <p>
+                        Preparación y presentación de declaraciones
+                        anuales para personas físicas y morales,
+                        de acuerdo con sus obligaciones fiscales.
+                    </p>
+
+                    <button onclick="abrirModal('anuales')">
+                        Más información
+                    </button>
+
+                </div>
+
+
+                <!-- SERVICIO 3 -->
+
+                <div class="card">
+
+                    <div class="card-icon">🧮</div>
+
+                    <h3>
+                        Contabilidad
+                    </h3>
+
+                    <p>
+                        Registro y control de operaciones contables
+                        para mantener información financiera organizada
+                        y actualizada.
+                    </p>
+
+                    <button onclick="abrirModal('contabilidad')">
+                        Más información
+                    </button>
+
+                </div>
+
+
+                <!-- SERVICIO 4 -->
+
+                <div class="card">
+
+                    <div class="card-icon">💰</div>
+
+                    <h3>
+                        Devoluciones de Saldos a Favor
+                    </h3>
+
+                    <p>
+                        Gestión y solicitud de devoluciones de saldos
+                        a favor ante la autoridad fiscal.
+                    </p>
+
+                    <button onclick="abrirModal('devoluciones')">
+                        Más información
+                    </button>
+
+                </div>
+
+
+                <!-- SERVICIO 5 -->
+
+                <div class="card">
+
+                    <div class="card-icon">📈</div>
+
+                    <h3>
+                        Asesoría Contable
+                    </h3>
+
+                    <p>
+                        Orientación para ayudarte a comprender mejor
+                        la situación contable y fiscal de tu negocio.
+                    </p>
+
+                    <button onclick="abrirModal('asesoria')">
+                        Más información
+                    </button>
+
+                </div>
+
+
+                <!-- SERVICIO 6 -->
+
+                <div class="card">
+
+                    <div class="card-icon">📊</div>
+
+                    <h3>
+                        Control Financiero
+                    </h3>
+
+                    <p>
+                        Organización de información financiera para
+                        facilitar la toma de decisiones de tu negocio.
+                    </p>
+
+                    <button onclick="abrirModal('finanzas')">
+                        Más información
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===== NOSOTROS ===== -->
+
+    <section id="nosotros">
+
+        <div class="container">
+
+            <div class="about">
+
+                <div class="about-text">
+
+                    <h2>
+                        Tu tranquilidad financiera,
+                        nuestra prioridad.
+                    </h2>
+
+                    <p>
+                        En <strong>Rosa la Conta</strong> ofrecemos
+                        servicios contables y fiscales enfocados en
+                        mantener tus obligaciones en orden.
+                    </p>
+
+                    <p>
+                        Sabemos que la contabilidad puede parecer
+                        complicada. Por eso buscamos hacerla más
+                        sencilla, clara y accesible.
+                    </p>
+
+                    <p>
+                        Nuestro objetivo es que tengas información
+                        organizada para tomar mejores decisiones
+                        financieras.
+                    </p>
+
+                </div>
+
+
+                <div class="accounting-box">
+
+                    <h3>📚 Rosa la Conta</h3>
+
+                    <ul>
+                        <li>✓ Atención personalizada</li>
+                        <li>✓ Información contable organizada</li>
+                        <li>✓ Cumplimiento de obligaciones fiscales</li>
+                        <li>✓ Seguimiento de tus trámites</li>
+                        <li>✓ Soluciones adaptadas a tus necesidades</li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===== BENEFICIOS ===== -->
+
+    <section id="beneficios">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2>¿Por qué elegirnos?</h2>
+
+                <p>
+                    Más que números, buscamos darte tranquilidad.
+                </p>
+
+            </div>
+
+            <div class="benefits">
+
+                <div class="benefit">
+
+                    <div class="benefit-icon">🔐</div>
+
+                    <h3>Confianza</h3>
+
+                    <p>
+                        Tratamos tu información con responsabilidad
+                        y profesionalismo.
+                    </p>
+
+                </div>
+
+
+                <div class="benefit">
+
+                    <div class="benefit-icon">⏰</div>
+
+                    <h3>Puntualidad</h3>
+
+                    <p>
+                        Seguimiento de tus obligaciones y fechas
+                        fiscales importantes.
+                    </p>
+
+                </div>
+
+
+                <div class="benefit">
+
+                    <div class="benefit-icon">💡</div>
+
+                    <h3>Claridad</h3>
+
+                    <p>
+                        Explicamos la información contable de manera
+                        sencilla y comprensible.
+                    </p>
+
+                </div>
+
+
+                <div class="benefit">
+
+                    <div class="benefit-icon">🤝</div>
+
+                    <h3>Atención</h3>
+
+                    <p>
+                        Servicio cercano y personalizado para cada
+                        cliente.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===== CONTACTO ===== -->
+
+    <section id="contacto">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2>Solicita información</h2>
+
+                <p>
+                    Cuéntanos qué necesitas y nos pondremos en contacto contigo.
+                </p>
+
+            </div>
+
+
+            <div class="contact-box">
+
+                <form onsubmit="enviarFormulario(event)">
+
+                    <div class="form-group">
+
+                        <label>
+                            Nombre
+                        </label>
+
+                        <input
+                            type="text"
+                            id="nombre"
+                            placeholder="Escribe tu nombre"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Correo electrónico
+                        </label>
+
+                        <input
+                            type="email"
+                            id="correo"
+                            placeholder="tucorreo@email.com"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            ¿En qué servicio estás interesado?
+                        </label>
+
+                        <select id="servicio"
+                                style="width:100%;padding:13px;border:1px solid #ccd8d0;border-radius:8px;">
+
+                            <option>
+                                Declaraciones mensuales
+                            </option>
+
+                            <option>
+                                Declaraciones anuales
+                            </option>
+
+                            <option>
+                                Contabilidad
+                            </option>
+
+                            <option>
+                                Devolución de saldo a favor
+                            </option>
+
+                            <option>
+                                Asesoría contable
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Mensaje
+                        </label>
+
+                        <textarea
+                            id="mensaje"
+                            placeholder="Cuéntanos brevemente qué necesitas..."
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+                    <button class="submit-btn" type="submit">
+                        📩 Solicitar información
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===== FOOTER ===== -->
+
+    <footer>
+
+        <p>
+            © 2026 <strong>Rosa la Conta</strong> |
+            Servicios Contables y Fiscales
+        </p>
+
+        <p style="margin-top:8px;">
+            "Tus números en buenas manos."
+        </p>
+
+    </footer>
+
+
+    <!-- ===== BOTÓN SUBIR ===== -->
+
+    <button id="topBtn" onclick="subirArriba()">
+        ↑
+    </button>
+
+
+    <!-- ===== MODAL ===== -->
+
+    <div class="modal" id="modal">
+
+        <div class="modal-content">
+
+            <span class="close" onclick="cerrarModal()">
+                &times;
+            </span>
+
+            <h2 id="modalTitulo"></h2>
+
+            <p id="modalTexto"></p>
+
+        </div>
+
+    </div>
+
+
+    <!-- ===== JAVASCRIPT ===== -->
+
+    <script>
+
+        /* MENÚ MÓVIL */
+
+        function toggleMenu() {
+
+            const menu = document.getElementById("menu");
+
+            menu.classList.toggle("active");
+
+        }
+
+
+        /* MODALES DE SERVICIOS */
+
+        function abrirModal(servicio) {
+
+            const modal = document.getElementById("modal");
+
+            const titulo = document.getElementById("modalTitulo");
+
+            const texto = document.getElementById("modalTexto");
+
+
+            if (servicio === "mensuales") {
+
+                titulo.innerHTML = "📅 Declaraciones Mensuales";
+
+                texto.innerHTML =
+                    "Nos encargamos de la preparación y presentación de tus declaraciones fiscales mensuales, buscando que cumplas oportunamente con tus obligaciones y mantengas un mejor control de tu información.";
+
+            }
+
+
+            if (servicio === "anuales") {
+
+                titulo.innerHTML = "📑 Declaraciones Anuales";
+
+                texto.innerHTML =
+                    "Preparamos y presentamos tus declaraciones anuales, revisando la información necesaria para determinar correctamente tus obligaciones fiscales.";
+
+            }
+
+
+            if (servicio === "contabilidad") {
+
+                titulo.innerHTML = "🧮 Contabilidad";
+
+                texto.innerHTML =
+                    "Llevamos el registro y organización de tus operaciones contables para que puedas contar con información financiera clara, ordenada y útil para la toma de decisiones.";
+
+            }
+
+
+            if (servicio === "devoluciones") {
+
+                titulo.innerHTML = "💰 Devoluciones de Saldos a Favor";
+
+                texto.innerHTML =
+                    "Te apoyamos con la integración y presentación de solicitudes de devolución de saldos a favor ante la autoridad fiscal, dando seguimiento al trámite.";
+
+            }
+
+
+            if (servicio === "asesoria") {
+
+                titulo.innerHTML = "📚 Asesoría Contable";
+
+                texto.innerHTML =
+                    "Te orientamos sobre temas contables y fiscales relacionados con tus operaciones, buscando que puedas tomar decisiones con mayor claridad.";
+
+            }
+
+
+            if (servicio === "finanzas") {
+
+                titulo.innerHTML = "📊 Control Financiero";
+
+                texto.innerHTML =
+                    "Organizamos tu información financiera para facilitar el análisis de tus operaciones y ayudarte a identificar oportunidades de mejora.";
+
+            }
+
+
+            modal.style.display = "flex";
+
+        }
+
+
+        function cerrarModal() {
+
+            document.getElementById("modal").style.display = "none";
+
+        }
+
+
+        /* CERRAR MODAL AL HACER CLICK FUERA */
+
+        window.onclick = function(event) {
+
+            const modal = document.getElementById("modal");
+
+            if (event.target === modal) {
+
+                cerrarModal();
+
+            }
+
+        }
+
+
+        /* FORMULARIO */
+
+        function enviarFormulario(event) {
+
+            event.preventDefault();
+
+            const nombre = document.getElementById("nombre").value;
+
+            alert(
+                "¡Gracias, " + nombre +
+                "! Hemos recibido tu solicitud. Rosa la Conta se pondrá en contacto contigo."
+            );
+
+        }
+
+
+        /* BOTÓN SUBIR */
+
+        window.onscroll = function() {
+
+            const boton = document.getElementById("topBtn");
+
+            if (document.documentElement.scrollTop > 400) {
+
+                boton.style.display = "block";
+
+            } else {
+
+                boton.style.display = "none";
+
+            }
+
+        };
+
+
+        function subirArriba() {
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        }
+
+    </script>
+
+</body>
+</html>
